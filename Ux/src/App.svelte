@@ -2,15 +2,13 @@
 	export let name: string;
 
 	import Avett from './TheAvettBrothers.svelte';
+	import Tile from './Tile.svelte';
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>This project by Anthony and Stephen is just getting started so there's really nothing interesting here yet.</p>
+	<h1>A Tile!</h1>
 
-	<p>But fear not, we've got this awesome Avett Brothers component for you to look at, demonstrating a tiny bit of Svelte</p>
-
-	<Avett />
+	<Tile topColor="gray" rightColor="lightBlue" bottomColor="red" leftColor="darkblue" />
 </main>
 
 <style>
