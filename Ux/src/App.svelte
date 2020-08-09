@@ -2,6 +2,7 @@
 	export let name: string;
 
 	import Avett from './TheAvettBrothers.svelte';
+	import Tile from './Tile.svelte';
 </script>
 
 <main>
@@ -11,6 +12,8 @@
 	<p>But fear not, we've got this awesome Avett Brothers component for you to look at, demonstrating a tiny bit of Svelte</p>
 
 	<Avett />
+
+	<Tile topColor="gray" rightColor="lightBlue" bottomColor="red" leftColor="black" />
 </main>
 
 <style>
