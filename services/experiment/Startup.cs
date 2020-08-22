@@ -15,6 +15,8 @@ namespace experiment
 {
     public class Startup
     {
+        private readonly string allowedOrigins = "allowedOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -26,6 +28,17 @@ namespace experiment
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors(options =>
+                {
+                    options.AddPolicy(name: allowedOrigins,
+                        builder =>
+                        {
+                            builder
+                                .WithOrigins("http://localhost:5000")
+                                .AllowAnyHeader()
+                                .AllowAnyOrigin();
+                        });
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,6 +52,8 @@ namespace experiment
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(allowedOrigins);
 
             app.UseAuthorization();
 
