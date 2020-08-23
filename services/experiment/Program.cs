@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using experiment.Utilities;
+using System.Net;
 
 namespace experiment
 {
@@ -20,7 +22,21 @@ namespace experiment
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder
+                        .UseStartup<Startup>()
+                        .ConfigureKestrel((context, options) =>
+                            {
+                                if (context.HostingEnvironment.IsDevelopment())
+                                {
+                                    options.Listen(IPAddress.Loopback, 443, listenOptions =>
+                                    {
+                                        var cert = CertificateUtility.GetBySubject("CN=api.tiles.local");
+                                        listenOptions.UseHttps(cert);
+                                    });
+                                }
+
+                                options.AddServerHeader = false;
+                            });
                 });
     }
 }
