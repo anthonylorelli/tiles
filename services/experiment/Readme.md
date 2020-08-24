@@ -26,4 +26,4 @@ This will spin up a server you can access in the browser at https://api.tiles.lo
 
 Note that, unless you install the cert to your Trusted Root Certificates, you may see a message saying this site is unsecure
 
-## See Ux [readme](../../ux/readme.md) for how to run the Ux -- it will access api.tiles.local via CORS xhr request, so the services project will need to be running
+## See Ux [readme](../../ux/readme.md) for how to run the Ux — it will access api.tiles.local via CORS xhr request, so the services project will need to be running
