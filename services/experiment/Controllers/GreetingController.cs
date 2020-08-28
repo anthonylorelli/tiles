@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +25,15 @@ namespace experiment.Controllers
         {
             IList<string> greetings = new List<string>();
 
-            greetings.Add("Hello!");
+            var vals = new Color[4];
+
+            for (int i = 0; i < vals.Length; ++i) {
+                vals[i] = ColorPattern.PickRandom();
+            }
+
+            foreach (var val in vals) {
+                greetings.Add(val.ToString());
+            }
 
             return greetings.ToArray();
         }
