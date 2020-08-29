@@ -31,8 +31,17 @@ namespace experiment.Controllers
                 vals[i] = ColorPattern.PickRandom();
             }
 
-            foreach (var val in vals) {
-                greetings.Add(val.ToString());
+            for (int i = 0; i < vals.Length; ++i) {
+                for (int j = 0; j < vals.Length; ++j) {
+                    for (int k = 0; k < vals.Length; ++k) {
+                        for (int l = 0; l < vals.Length; ++l) {
+                            greetings.Add(vals[i].ToString() + " " +
+                                vals[j].ToString() + " " + 
+                                vals[k].ToString() + " " + 
+                                vals[l].ToString());
+                        }
+                    }
+                }
             }
 
             return greetings.ToArray();
