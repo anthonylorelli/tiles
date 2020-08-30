@@ -35,10 +35,11 @@ namespace experiment.Controllers
                 for (int j = 0; j < vals.Length; ++j) {
                     for (int k = 0; k < vals.Length; ++k) {
                         for (int l = 0; l < vals.Length; ++l) {
-                            greetings.Add(vals[i].ToString() + " " +
-                                vals[j].ToString() + " " + 
-                                vals[k].ToString() + " " + 
-                                vals[l].ToString());
+                            // greetings.Add(vals[i].ToString() + " " +
+                            //     vals[j].ToString() + " " + 
+                            //     vals[k].ToString() + " " + 
+                            //     vals[l].ToString());
+                            greetings.Add(i.ToString() + j.ToString() + k.ToString() + l.ToString());
                         }
                     }
                 }
