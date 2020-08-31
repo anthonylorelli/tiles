@@ -20,6 +20,28 @@ namespace experiment.Controllers
             _logger = logger;
         }
 
+        private void Generate()
+        {
+            var vals = new int[4];
+            vals[0] = 0; vals[1] = 1; vals[2] = 2; vals[3] = 3;
+
+            var variations = new int[256, 4];
+            int current = 0;
+
+            for (int i = 0; i < vals.Length; ++i) {
+                for (int j = 0; j < vals.Length; ++j) {
+                    for (int k = 0; k < vals.Length; ++k) {
+                        for (int l = 0; l < vals.Length; ++l) {
+                            variations[current, 0] = i;
+                            variations[current, 1] = j;
+                            variations[current, 2] = k;
+                            variations[current, 3] = l;
+                        }
+                    }
+                }
+            }
+        }
+
         [HttpGet]
         public IEnumerable<string> Get()
         {
@@ -35,10 +57,6 @@ namespace experiment.Controllers
                 for (int j = 0; j < vals.Length; ++j) {
                     for (int k = 0; k < vals.Length; ++k) {
                         for (int l = 0; l < vals.Length; ++l) {
-                            // greetings.Add(vals[i].ToString() + " " +
-                            //     vals[j].ToString() + " " + 
-                            //     vals[k].ToString() + " " + 
-                            //     vals[l].ToString());
                             greetings.Add(i.ToString() + j.ToString() + k.ToString() + l.ToString());
                         }
                     }
