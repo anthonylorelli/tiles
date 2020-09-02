@@ -20,26 +20,27 @@ namespace experiment.Controllers
             _logger = logger;
         }
 
-        private void Generate()
+        private int[,] Generate()
         {
-            var vals = new int[4];
-            vals[0] = 0; vals[1] = 1; vals[2] = 2; vals[3] = 3;
-
-            var variations = new int[256, 4];
+            int rowSize = 4;
+            var variations = new int[256, rowSize];
             int current = 0;
 
-            for (int i = 0; i < vals.Length; ++i) {
-                for (int j = 0; j < vals.Length; ++j) {
-                    for (int k = 0; k < vals.Length; ++k) {
-                        for (int l = 0; l < vals.Length; ++l) {
+            for (int i = 0; i < rowSize; ++i) {
+                for (int j = 0; j < rowSize; ++j) {
+                    for (int k = 0; k < rowSize; ++k) {
+                        for (int l = 0; l < rowSize; ++l) {
                             variations[current, 0] = i;
                             variations[current, 1] = j;
                             variations[current, 2] = k;
                             variations[current, 3] = l;
+                            ++current;
                         }
                     }
                 }
             }
+
+            return variations;
         }
 
         public void Rotate<T>(T[] arr, int shift)
@@ -68,21 +69,13 @@ namespace experiment.Controllers
         {
             IList<string> greetings = new List<string>();
 
-            var vals = new Color[4];
+            // var vals = new Color[4];
 
-            for (int i = 0; i < vals.Length; ++i) {
-                vals[i] = ColorPattern.PickRandom();
-            }
+            // for (int i = 0; i < vals.Length; ++i) {
+            //     vals[i] = ColorPattern.PickRandom();
+            // }
 
-            for (int i = 0; i < vals.Length; ++i) {
-                for (int j = 0; j < vals.Length; ++j) {
-                    for (int k = 0; k < vals.Length; ++k) {
-                        for (int l = 0; l < vals.Length; ++l) {
-                            greetings.Add(i.ToString() + j.ToString() + k.ToString() + l.ToString());
-                        }
-                    }
-                }
-            }
+            var list = Generate();
 
             return greetings.ToArray();
         }
