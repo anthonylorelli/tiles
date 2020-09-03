@@ -52,16 +52,25 @@ namespace experiment.Controllers
             Array.Copy(buffer, 0, arr, arr.Length - shift, shift);
         }
 
-        private int Match(int[,] list, int[] target, int start)
+        private bool Match(int[,] list, int index, int[] target)
         {
-            for (int i = start; i < list.Length; ++i) {
-                if (list[i,0] == target[0] && list[i,1] == target[1] &&
-                    list[i,2] == target[2] && list[i,3] == target[3]) {
-                    return i;
+            return  (list[index,0] == target[0] && list[index,1] == target[1] &&
+                    list[index,2] == target[2] && list[index,3] == target[3]);
+        }
+
+        private string Find(int[,] list, int[] target, int start)
+        {
+            string result = start.ToString() + " [" + target[0] + "," + target[1] + "," + 
+                target[2] + "," + target[3] + "] ";
+            for (int i = start + 1; i < list.GetLength(0); ++i) {
+                for (int k = 0; k < 4; Rotate(target, 1), ++k) {
+                    if (Match(list, i, target)) {
+                        result += i + " ";
+                    }
                 }
             }
 
-            return -1;
+            return result;
         }
 
         [HttpGet]
@@ -76,6 +85,11 @@ namespace experiment.Controllers
             // }
 
             var list = Generate();
+
+            for (int i = 0; i < list.GetLength(0); ++i) {
+                int[] target = new int[] {list[i,0], list[i,1], list[i,2], list[i,3]};
+                greetings.Add(Find(list, target, i));
+            }
 
             return greetings.ToArray();
         }
