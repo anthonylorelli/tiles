@@ -13,6 +13,7 @@ namespace experiment
 
         public TileSet() {
             m_tiles = new Tile[64] {
+                new Tile { North = m_d, East = m_c, South = m_b, West = m_a },
                 new Tile { North = m_a, East = m_a, South = m_a, West = m_a },
                 new Tile { North = m_b, East = m_a, South = m_a, West = m_a },
                 new Tile { North = m_b, East = m_b, South = m_a, West = m_a },
@@ -55,9 +56,9 @@ namespace experiment
                 new Tile { North = m_d, East = m_b, South = m_d, West = m_a },
                 new Tile { North = m_d, East = m_c, South = m_a, West = m_a },
                 new Tile { North = m_d, East = m_c, South = m_a, West = m_b },
-                new Tile { North = m_d, East = m_c, South = m_a, West = m_a },
-                new Tile { North = m_d, East = m_c, South = m_a, West = m_b },
                 new Tile { North = m_d, East = m_c, South = m_a, West = m_c },
+                new Tile { North = m_d, East = m_c, South = m_b, West = m_b },
+                new Tile { North = m_d, East = m_c, South = m_b, West = m_c },
                 new Tile { North = m_d, East = m_c, South = m_c, West = m_a },
                 new Tile { North = m_d, East = m_c, South = m_c, West = m_b },
                 new Tile { North = m_d, East = m_c, South = m_c, West = m_c },
@@ -75,8 +76,7 @@ namespace experiment
                 new Tile { North = m_d, East = m_d, South = m_d, West = m_a },
                 new Tile { North = m_d, East = m_d, South = m_d, West = m_b },
                 new Tile { North = m_d, East = m_d, South = m_d, West = m_c },
-                new Tile { North = m_d, East = m_d, South = m_d, West = m_d },
-                new Tile()
+                new Tile { North = m_d, East = m_d, South = m_d, West = m_d }
             };
         }
     }
