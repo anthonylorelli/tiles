@@ -80,5 +80,9 @@ namespace experiment
                 new Tile { North = m_d, East = m_d, South = m_d, West = m_d, Id = $"tile_{(++id).ToString()}" }
             };
         }
+
+        public Tile[] ToArray() {
+            return m_tiles;
+        }
     }
 }
