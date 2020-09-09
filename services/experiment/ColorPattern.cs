@@ -5,11 +5,6 @@ namespace experiment
 {
     public class ColorPattern
     {
-        public Color North { get; set; }
-        public Color East { get; set; }
-        public Color South { get; set; }
-        public Color West { get; set; }
-
         public static Color PickRandom()
         {
             var random = new Random();
