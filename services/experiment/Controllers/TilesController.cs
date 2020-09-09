@@ -22,13 +22,8 @@ namespace experiment.Controllers
         [HttpGet]
         public IEnumerable<Tile> Get()
         {
-            IList<Tile> tiles = new List<Tile>();
-            for (int i = 0; i < 64; i++)
-            {
-                tiles.Add(new Tile() { Id = $"tile_{i.ToString()}" });
-            }
-
-            return tiles.ToArray();
+            TileSet set = new TileSet();
+            return set.ToArray();
         }
     }
 }
