@@ -34,7 +34,7 @@ namespace experiment
                         builder =>
                         {
                             builder
-                                .WithOrigins("http://localhost:5000")
+                                .WithOrigins("http://localhost:8080")
                                 .AllowAnyHeader()
                                 .AllowAnyOrigin();
                         });
@@ -53,7 +53,10 @@ namespace experiment
 
             app.UseRouting();
 
-            app.UseCors(allowedOrigins);
+            if (!env.IsProduction())
+            {
+                app.UseCors(allowedOrigins);
+            }
 
             app.UseAuthorization();
 
